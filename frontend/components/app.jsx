@@ -1,4 +1,5 @@
 import React from 'react';
+import Title from './title'
 
 import {
   Route,
@@ -17,7 +18,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h3>The</h3>
+        <Title />
       </div>
     );
   }
