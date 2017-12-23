@@ -8,7 +8,8 @@ class Title extends React.Component {
 
     return (
       <div>
-        
+        <h2>The</h2>
+        <h1>Name Hall of Fame</h1>
       </div>
     );
   }
