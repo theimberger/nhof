@@ -12,5 +12,6 @@
  *
  *= require_tree .
  *= require './welcome'
+ *= require './base'
  *= require_self
  */
