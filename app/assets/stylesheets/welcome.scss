@@ -4,7 +4,10 @@
   position: relative;
 }
 
-#title_page {
+.title_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   text-transform: uppercase;
   position: absolute;
   top: 10px;
@@ -12,11 +15,11 @@
   left: 10px;
   right: 10px;
   text-align: center;
-  border: 5px double $white;
+  border: 1px solid $white;
 
   h1 {
     letter-spacing: 5px;
-    margin-top: 0;
+    margin-top: -10px;
   }
 
   h1, h2 {
@@ -25,28 +28,40 @@
   }
 
   h2 {
-    margin: 60px auto;
+    margin: -20px auto -20px;
     letter-spacing: 10px;
+    font-size: 1.3em;
   }
 
   h3 {
-    margin-top: 4%;
-    margin-bottom: 10px;
+    font-family: $serif;
+    letter-spacing: 5px;
+    font-weight: 400;
+    font-size: 1.1em;
+    margin-top: 20px;
+    margin-bottom: 0px;
   }
 
-  h3, h4 {
+  h4 {
+    margin-top: 50px;
+    margin-bottom: 0px;
+    letter-spacing: 5px;
+  }
+
+  h4, h5 {
     font-family: $sans;
     font-size: 0.9em;
     font-weight: 100;
   }
 
-  h4 {
-    margin: auto;
-    width: 600px;
+  h5 {
+    letter-spacing: 10px;
+    margin: 50px auto;
+    width: 700px;
     color: $grey;
 
     &:first-of-type {
-      margin-top: 5%;
+      margin-top: 20px;
     }
 
     span {
@@ -59,6 +74,43 @@
       border: none;
       border-top: 1px solid $white;
     }
+  }
+
+  #add_name {
+    margin: 0;
+    input {
+      font-style: italic;
+      font-weight: 400;
+      font-family: $sans;
+      letter-spacing: 5px;
+      font-size: 0.9em;
+      padding: 15px;
+      width: 700px;
+      text-align: center;
+      background: $black;
+      border: 1px solid $white;
+      outline: none;
+      color: $darkgrey;
+
+      &:focus {
+        color: $white;
+      }
+
+    }
+  }
+
+  p {
+    margin-bottom: -20px;
+    font-size: .6em;
+    font-family: $sans;
+    font-style: italic;
+    letter-spacing: 5px;
+    color: $grey;
+  }
+
+  #down_arrow {
+    font-size: 2.5em;
+    font-family: $sans;
   }
 
 }

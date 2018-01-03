@@ -1,29 +1,36 @@
 import React from 'react';
+import AddName from './add_name';
 
 class Title extends React.Component {
-
-
 
   render() {
 
     return (
       <div id="title_wrapper">
-        <div id="title_page">
-          <h3>The</h3>
-          <h1>Name Hall of Fame</h1>
-          <h4>
-            <span>Celebrating</span>
-            <hr class="center_line" />
-          </h4>
-          <h2>
-            the very best monikers
-          </h2>
-          <h4>
-            <span>of all time</span>
-            <hr class="center_line" />
-          </h4>
+        <div className="title_page">
+          <div className="title_page">
+
+            <h4>The</h4>
+            <h1>Name Hall of Fame</h1>
+            <h5>
+              <span>Celebrating</span>
+              <hr className="center_line" />
+            </h5>
+            <h2>
+              the very best monikers
+            </h2>
+            <h5>
+              <span>of all time</span>
+              <hr className="center_line" />
+            </h5>
+            <h3>Add a name to the list</h3>
+            <AddName />
+            <p>Scroll to list</p>
+            <span id="down_arrow">↓</span>
+          </div>
         </div>
       </div>
+
     );
   }
 
