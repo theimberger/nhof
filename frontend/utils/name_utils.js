@@ -18,16 +18,36 @@ const validateName = (data) => {
 
   info = info[Object.keys(info)[0]];
   info = info.revisions[0]["*"];
-  console.log(info);
   info = info.split("'''");
   info = info.slice(1).join("");
   info = info.split("\n");
   info = info[0];
 
+  let i = 0;
+  while (i < info.length) {
+    if (info[i] === "<") {
+      let j = i + 1;
+      let secondClose = false;
+      while (j < info.length) {
+        if (info[j] === ">") {
+          if (secondClose || info[j - 1] === "/") {
+            info = info.slice(0, i) + info.slice(j + 1, info.length);
+            j = info.length + 1;
+            i = 0;
+          } else {
+            secondClose = true;
+          }
+        }
+        j ++;
+      }
+    }
+    i ++;
+  }
+
   info = info.split("[[");
   info = info.map(
     (phrase) => {
-      if (phrase.includes("|")){
+      if (phrase.includes("|")) {
         let couplet = phrase.split("|");
         couplet = couplet[1];
         couplet = couplet.split("]]");
@@ -38,11 +58,7 @@ const validateName = (data) => {
 
     }
   );
-
   info = info.join("");
-
-
-
-
+  
   console.log(info);
 };
