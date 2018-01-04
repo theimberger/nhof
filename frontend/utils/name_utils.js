@@ -14,15 +14,20 @@ export const submitName = (name) => {
 
 const validateName = (data) => {
 
-  let info = data.query.pages;
+  let isPerson = false,
+      info = data.query.pages;
 
+  // parsing wiki content, first, get content from json
   info = info[Object.keys(info)[0]];
   info = info.revisions[0]["*"];
+
+  // get first paragraph
   info = info.split("'''");
   info = info.slice(1).join("");
   info = info.split("\n");
   info = info[0];
 
+  // remove <ref> tags
   let i = 0;
   while (i < info.length) {
     if (info[i] === "<") {
@@ -44,6 +49,8 @@ const validateName = (data) => {
     i ++;
   }
 
+  // remove internal links, formated as either
+  // [[link]] or [[link | linktext]]
   info = info.split("[[");
   info = info.map(
     (phrase) => {
@@ -59,6 +66,43 @@ const validateName = (data) => {
     }
   );
   info = info.join("");
-  
-  console.log(info);
+
+  // check for either a date born or a month within a set of parens
+  let parenCapture = info.match(/\((.*?)\)/g), //selects all text inside parens
+      months = [
+        "january",
+        "febuary",
+        "march",
+        "april",
+        "may",
+        "june",
+        "july",
+        "august",
+        "september",
+        "october",
+        "novemeber",
+        "december"
+      ];
+
+  if (parenCapture) {
+    parenCapture.forEach((group) => {
+      group = group.toLowerCase();
+      if (group.includes("born")) {
+        isPerson = true;
+      } else {
+        months.forEach((month) => {
+          if (group.includes(month)) {
+            isPerson = true;
+          }
+        });
+      }
+    });
+  }
+
+  // if a date is found - return info
+  if (isPerson) {
+    return info;
+  } else {
+    return false;
+  }
 };
