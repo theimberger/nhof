@@ -19,6 +19,11 @@ export const validateName = (data) => {
 
   // parsing wiki content, first, get content from json
   info = info[Object.keys(info)[0]];
+  
+  if (!info.pageid) {
+    return "no page found";
+  }
+
   info = info.revisions[0]["*"];
 
   // get first paragraph

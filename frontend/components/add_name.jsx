@@ -7,7 +7,11 @@ class AddName extends React.Component {
   constructor() {
     super();
     this.state = {
-      inputValue: "TYPE NAME HERE"
+      inputValue: "TYPE NAME HERE",
+      status: {
+        ok: true,
+        message: ""
+      }
     };
 
     this.clearInitial = this.clearInitial.bind(this);
@@ -17,34 +21,43 @@ class AddName extends React.Component {
   }
 
   clearInitial() {
+    let newState = Object.assign({}, this.state);
+    newState.inputValue = "";
     if (this.state.inputValue === "TYPE NAME HERE") {
-      this.setState({
-        inputValue: "",
-        status: "waiting"
-      });
+      this.setState(newState);
     }
   }
 
   setInitial() {
+    let newState = Object.assign({}, this.state);
+    newState.inputValue = "TYPE NAME HERE";
     if (this.state.inputValue === "") {
-      this.setState({inputValue: "TYPE NAME HERE"});
+      this.setState(newState);
     }
   }
 
   handleInput(e) {
-    this.setState({inputValue: e.target.value});
+    let newState = Object.assign({}, this.state);
+    newState.inputValue = e.target.value;
+    this.setState(newState);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    let newState = this.state;
-    newState.status = pending;
+    let newState = Object.assign({}, this.state);
+    newState.status.message = "pending";
 
     NameUtils.submitName(this.state.inputValue).then(
       (res) =>{
         let name = NameUtils.validateName(res);
         if (!name) {
-          newState.status = "name not found";
+          newState.status.ok = false;
+          newState.status.message = "not a name";
+          this.setState(newState);
+        }
+        if (name === "no page found") {
+          newState.status.ok = false;
+          newState.status.message = "no name found";
           this.setState(newState);
         }
       });
@@ -55,8 +68,10 @@ class AddName extends React.Component {
   render() {
     let statusReport;
 
-    if (this.state.status === "name not found") {
-      statusReport = <NameError type="name not found" />;
+
+    if (!this.state.status.ok) {
+      $("#title_content").css("visibility", "hidden");
+      statusReport = <NameError type={this.state.status.message} />;
     }
 
     return (
@@ -71,6 +86,7 @@ class AddName extends React.Component {
           value={this.state.inputValue}>
 
         </input>
+        {statusReport}
       </form>
     );
   }

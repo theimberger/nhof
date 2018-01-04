@@ -3,11 +3,31 @@ import React from 'react';
 class NameError extends React.Component {
 
   render() {
+    let title,
+        details;
 
+    switch (this.props.type) {
+      case "no name found":
+        title = "Whoops";
+        details = <p>It's got to be someone the world knows. <br/>
+          They should be on wikipedia or something, you know?</p>;
+        break;
+      case "not a name":
+        title = "Whoops";
+        details = <p>That doesn't seem to be a name. <br/>
+          Check your capitalization and spelling maybe?</p>;
+        break;
+      default:
+        title = "Error";
+        details = <p>Uh oh, some unforseen evil has
+        befallen your submission.<br/>Try again.</p>;
+    }
 
     return (
       <div className="error_report">
-        
+        <span className="close_error">☓</span>
+        <h1>{title}</h1>
+        {details}
       </div>
     );
   }
