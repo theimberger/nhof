@@ -7,12 +7,12 @@ export const submitName = (name) => {
 
   return $.ajax({
     method: "GET",
-    url: `https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&origin=*&titles=${corrected}`,
-    success: validateName
+    url: `https://en.wikipedia.org/w/api.php?action=query` +
+      `&prop=revisions&rvprop=content&format=json&origin=*&titles=${corrected}`
   });
 };
 
-const validateName = (data) => {
+export const validateName = (data) => {
 
   let isPerson = false,
       info = data.query.pages;

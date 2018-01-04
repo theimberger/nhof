@@ -1,5 +1,6 @@
 import React from 'react';
-import { submitName } from '../utils/name_utils';
+import NameError from './name_error';
+import * as NameUtils from '../utils/name_utils';
 
 class AddName extends React.Component {
 
@@ -17,7 +18,10 @@ class AddName extends React.Component {
 
   clearInitial() {
     if (this.state.inputValue === "TYPE NAME HERE") {
-      this.setState({inputValue: ""});
+      this.setState({
+        inputValue: "",
+        status: "waiting"
+      });
     }
   }
 
@@ -33,10 +37,28 @@ class AddName extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    submitName(this.state.inputValue);
+    let newState = this.state;
+    newState.status = pending;
+
+    NameUtils.submitName(this.state.inputValue).then(
+      (res) =>{
+        let name = NameUtils.validateName(res);
+        if (!name) {
+          newState.status = "name not found";
+          this.setState(newState);
+        }
+      });
+
+    this.setState(newState);
   }
 
   render() {
+    let statusReport;
+
+    if (this.state.status === "name not found") {
+      statusReport = <NameError type="name not found" />;
+    }
+
     return (
       <form id="add_name"
         onSubmit={(e) => this.handleSubmit(e)}>

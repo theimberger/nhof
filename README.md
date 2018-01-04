@@ -1,24 +1,5 @@
-# README
+# The Name Hall of Fame
+The Name Hall of Fame is a pet project I've been working on with my brother.  The idea is born of inside joke between us and our friend Collin and
+the purpose is to document the greatest names ever bequeathed.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Names are submitted by the public but only are added to the list if they have a corresponding wikipedia page.
