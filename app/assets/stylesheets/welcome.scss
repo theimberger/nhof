@@ -79,6 +79,7 @@
   #add_name {
     margin: 0;
     input {
+      text-transform: uppercase;
       font-style: italic;
       font-weight: 400;
       font-family: $sans;

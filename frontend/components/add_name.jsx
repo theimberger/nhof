@@ -1,4 +1,5 @@
 import React from 'react';
+import { submitName } from '../utils/name_utils';
 
 class AddName extends React.Component {
 
@@ -11,6 +12,7 @@ class AddName extends React.Component {
     this.clearInitial = this.clearInitial.bind(this);
     this.setInitial = this.setInitial.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   clearInitial() {
@@ -29,10 +31,16 @@ class AddName extends React.Component {
     this.setState({inputValue: e.target.value});
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    submitName(this.state.inputValue);
+  }
+
   render() {
-    console.log(this.state);
     return (
-      <form id="add_name">
+      <form id="add_name"
+        onSubmit={(e) => this.handleSubmit(e)}>
+
         <input
           type="text"
           onFocus={() => this.clearInitial()}
@@ -40,7 +48,7 @@ class AddName extends React.Component {
           onChange={(e) => this.handleInput(e)}
           value={this.state.inputValue}>
 
-          </input>
+        </input>
       </form>
     );
   }
