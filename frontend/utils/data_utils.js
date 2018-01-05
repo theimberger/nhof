@@ -2,7 +2,7 @@ export const passNameToDatabase = (name, description) => {
 
   let nameData = {
     name: name,
-    description: description
+    bio: description
   };
 
   return $.ajax({
@@ -10,5 +10,5 @@ export const passNameToDatabase = (name, description) => {
     url: "/",
     data: nameData
   });
-  
+
 };
