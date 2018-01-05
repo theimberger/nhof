@@ -9,7 +9,6 @@ class App extends React.Component {
 
     return (
       <div id="app">
-
         <Title />
         <Spacer />
         <List />

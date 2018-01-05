@@ -9,8 +9,11 @@ class List extends React.Component {
 
   componentDidMount() {
     let newState = this.state;
-    ListUtils.getNames();
-
+    ListUtils.getNames().then(
+      (res) => {
+        newState.members = res;
+        this.setState(newState);
+      });
   }
 
 
@@ -18,9 +21,23 @@ class List extends React.Component {
     if (this.state.members.length === 0){
       return <div></div>;
     }
+    let memberLis = [];
+    this.state.members.forEach((member) => {
+      memberLis.push(
+        <li key={member.id}>
+          <h2>{member.id}</h2>
+          <h1>{member.name}</h1>
+          <p>{member.bio}</p>
+        </li>
+      );
+    });
 
     return (
-      <div id="list"></div>
+      <div id="list">
+        <ul>
+          {memberLis}
+        </ul>
+      </div>
     );
   }
 

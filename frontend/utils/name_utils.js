@@ -20,6 +20,8 @@ export const validateName = (data) => {
 
   info = info.revisions[0]["*"];
 
+  console.log(info);
+
   // get first paragraph
   info = info.split("'''");
   info = info.slice(1).join("");

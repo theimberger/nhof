@@ -1,6 +1,6 @@
 export const getNames = () => {
   return $.ajax({
     method: "GET",
-    url: "/"
+    url: "/names"
   });
 };

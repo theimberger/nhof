@@ -2,6 +2,7 @@ class NamesController < ApplicationController
 
   def index
     @names = Name.all
+    render 'index'
   end
 
   def create
