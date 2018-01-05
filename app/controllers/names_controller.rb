@@ -1,7 +1,7 @@
 class NamesController < ApplicationController
 
   def index
-    render json: ["hello"], status: 200
+    @names = Name.all
   end
 
   def create

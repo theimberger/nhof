@@ -29,10 +29,9 @@ class NameError extends React.Component {
 
     return (
       <div className="error report">
-        <span className="close"
-          onClick={this.props.close()}>
-          ☓
-        </span>
+        <img className="close"
+          onClick={this.props.close()}
+          src={window.closeX} />
         <h1>{title}</h1>
         {details}
       </div>
