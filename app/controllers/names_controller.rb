@@ -4,4 +4,8 @@ class NamesController < ApplicationController
     render json: ["hello"], status: 200
   end
 
+  def create
+    debugger
+  end
+
 end

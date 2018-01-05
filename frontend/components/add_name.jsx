@@ -1,6 +1,7 @@
 import React from 'react';
 import NameError from './name_error';
 import * as NameUtils from '../utils/name_utils';
+import * as DataUtils from '../utils/data_utils';
 
 class AddName extends React.Component {
 
@@ -47,18 +48,24 @@ class AddName extends React.Component {
     let newState = Object.assign({}, this.state);
     newState.status.message = "pending";
 
-    NameUtils.submitName(this.state.inputValue).then(
+    let corrected = this.state.inputValue.toLowerCase();
+    corrected = corrected.split(" ");
+    corrected = corrected.map((n) => n[0].toUpperCase() + n.slice(1));
+    corrected = corrected.join(" ");
+
+    NameUtils.submitName(corrected).then(
       (res) =>{
         let name = NameUtils.validateName(res);
         if (!name) {
           newState.status.ok = false;
           newState.status.message = "not a name";
           this.setState(newState);
-        }
-        if (name === "no page found") {
+        } else if (name === "no page found") {
           newState.status.ok = false;
           newState.status.message = "no name found";
           this.setState(newState);
+        } else {
+          DataUtils.passNameToDatabase(corrected, name);
         }
       });
 

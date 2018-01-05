@@ -1,4 +1,5 @@
 class Name < ApplicationRecord
-  validates :name, presence: true
+  validates :name, :bio, presence: true, uniqueness: true
+
 
 end

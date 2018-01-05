@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "static_pages#root"
-  resources :names, path: "", default: :json
+  resources :names, path: "", only: [:create, :index], default: :json
 
 end

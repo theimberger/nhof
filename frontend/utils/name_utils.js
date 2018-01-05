@@ -1,14 +1,8 @@
 export const submitName = (name) => {
-
-  let corrected = name.toLowerCase();
-  corrected = corrected.split(" ");
-  corrected = corrected.map((n) => n[0].toUpperCase() + n.slice(1));
-  corrected = corrected.join(" ");
-
   return $.ajax({
     method: "GET",
     url: `https://en.wikipedia.org/w/api.php?action=query` +
-      `&prop=revisions&rvprop=content&format=json&origin=*&titles=${corrected}`
+      `&prop=revisions&rvprop=content&format=json&origin=*&titles=${name}`
   });
 };
 
@@ -19,7 +13,7 @@ export const validateName = (data) => {
 
   // parsing wiki content, first, get content from json
   info = info[Object.keys(info)[0]];
-  
+
   if (!info.pageid) {
     return "no page found";
   }
