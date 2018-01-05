@@ -17,6 +17,10 @@ class NameError extends React.Component {
         details = <p>That doesn't seem to be a name. <br/>
           Check your capitalization and spelling maybe?</p>;
         break;
+      case "already submitted":
+        title = "Great Minds";
+        details = <p>It looks like somebody has already submitted that name</p>;
+        break;
       default:
         title = "Error";
         details = <p>Uh oh, some unforseen evil has

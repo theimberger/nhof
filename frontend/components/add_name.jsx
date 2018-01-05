@@ -65,7 +65,16 @@ class AddName extends React.Component {
           newState.status.message = "no name found";
           this.setState(newState);
         } else {
-          DataUtils.passNameToDatabase(corrected, name);
+          DataUtils.passNameToDatabase(corrected, name).then(
+            () => {},
+            (err) => {
+              if (err.status === 422) {
+                newState.status.ok = false;
+                newState.status.message = "already submitted";
+                this.setState(newState);
+              }
+            }
+          );
         }
       });
 
