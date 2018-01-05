@@ -1,5 +1,6 @@
 import React from 'react';
 import NameError from './name_error';
+import NameSuccess from './name_success';
 import * as NameUtils from '../utils/name_utils';
 import * as DataUtils from '../utils/data_utils';
 
@@ -10,7 +11,7 @@ class AddName extends React.Component {
     this.state = {
       inputValue: "TYPE NAME HERE",
       status: {
-        ok: true,
+        pending: true,
         message: ""
       }
     };
@@ -19,6 +20,14 @@ class AddName extends React.Component {
     this.setInitial = this.setInitial.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.closeError = this.closeError.bind(this);
+  }
+
+  closeError() {
+    let newState = Object.assign({}, this.state);
+    newState.status.pending = true;
+    this.setState(newState);
+    $("#title_content").css("visibility", "visible");
   }
 
   clearInitial() {
@@ -46,7 +55,6 @@ class AddName extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let newState = Object.assign({}, this.state);
-    newState.status.message = "pending";
 
     let corrected = this.state.inputValue.toLowerCase();
     corrected = corrected.split(" ");
@@ -56,20 +64,21 @@ class AddName extends React.Component {
     NameUtils.submitName(corrected).then(
       (res) =>{
         let name = NameUtils.validateName(res);
+        newState.status.pending = false;
         if (!name) {
-          newState.status.ok = false;
           newState.status.message = "not a name";
           this.setState(newState);
         } else if (name === "no page found") {
-          newState.status.ok = false;
           newState.status.message = "no name found";
           this.setState(newState);
         } else {
           DataUtils.passNameToDatabase(corrected, name).then(
-            () => {},
+            () => {
+              newState.status.message = "success";
+              this.setState(newState);
+            },
             (err) => {
               if (err.status === 422) {
-                newState.status.ok = false;
                 newState.status.message = "already submitted";
                 this.setState(newState);
               }
@@ -83,11 +92,18 @@ class AddName extends React.Component {
 
   render() {
     let statusReport;
-
-
-    if (!this.state.status.ok) {
+    if (!this.state.status.pending) {
       $("#title_content").css("visibility", "hidden");
-      statusReport = <NameError type={this.state.status.message} />;
+
+      if (this.state.status.message === "success") {
+        statusReport = <NameSuccess
+          name={this.state.inputValue}
+          close={() => this.closeError}/>;
+      } else {
+        statusReport = <NameError
+          type={this.state.status.message}
+          close={() => this.closeError}/>;
+      }
     }
 
     return (

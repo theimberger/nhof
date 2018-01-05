@@ -47,6 +47,7 @@ export const validateName = (data) => {
     }
     i ++;
   }
+  console.log(info);
 
   // remove internal links, formated as either
   // [[link]] or [[link | linktext]]
@@ -99,6 +100,7 @@ export const validateName = (data) => {
   }
 
   // if a date is found - return info
+
   if (isPerson) {
     return info;
   } else {

@@ -18,7 +18,7 @@ class NameError extends React.Component {
           Check your capitalization and spelling maybe?</p>;
         break;
       case "already submitted":
-        title = "Great Minds";
+        title = "Great Minds...";
         details = <p>It looks like somebody has already submitted that name</p>;
         break;
       default:
@@ -28,8 +28,11 @@ class NameError extends React.Component {
     }
 
     return (
-      <div className="error_report">
-        <span className="close_error">☓</span>
+      <div className="error report">
+        <span className="close"
+          onClick={this.props.close()}>
+          ☓
+        </span>
         <h1>{title}</h1>
         {details}
       </div>
