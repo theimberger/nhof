@@ -23,16 +23,11 @@ class List extends React.Component {
     }
     let memberLis = [];
     this.state.members.forEach((member) => {
-      let idInt = parseInt(member.id);
-      idInt = (idInt / 10000).toString();
-      idInt = idInt.slice(2);
-
-
-
+      let inducted = ListUtils.formatDate(member.date);
 
       memberLis.push(
-        <li key={idInt}>
-          <h2>{idInt}</h2>
+        <li key={member.date}>
+          <h2>I: {inducted}</h2>
           <h1>{member.name}</h1>
           <p>{member.bio}</p>
         </li>

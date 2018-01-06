@@ -75,6 +75,7 @@ class AddName extends React.Component {
           DataUtils.passNameToDatabase(corrected, name).then(
             () => {
               newState.status.message = "success";
+
               this.setState(newState);
             },
             (err) => {
@@ -94,8 +95,13 @@ class AddName extends React.Component {
     let statusReport;
     if (!this.state.status.pending) {
       $("#title_content").css("visibility", "hidden");
+      $("#title_content p").css("visibility", "hidden");
+      $("#title_content img").css("visibility", "hidden");
 
       if (this.state.status.message === "success") {
+        $("#title_content p").css("visibility", "visible");
+        $("#title_content img").css("visibility", "visible");
+
         statusReport = <NameSuccess
           name={this.state.inputValue}
           close={() => this.closeError}/>;
