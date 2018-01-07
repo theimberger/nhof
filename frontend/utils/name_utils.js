@@ -26,14 +26,26 @@ export const validateName = (data) => {
       }
 
   // get first paragraph
+
   info = info.split("'''");
   info = info.slice(1).join("");
   info = info.split("\n");
-  info = info[0];
+  let i = 0;
+  if (info[i]) {
+    while (info[i].length < 100) {
+      if (i > info.length) {
+        return false;
+      }
+      i ++;
+    }
+  } else {
+    return false;
+  }
 
+  info = info[i];
 
   // remove anything in {{}}
-  let i = 0;
+  i = 0;
   while (i < info.length) {
     if (info[i] === "{" && info[i + 1] === "{") {
       let j = i + 2;

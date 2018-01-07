@@ -7,8 +7,10 @@ class Title extends React.Component {
 
     return (
         <div className="wrapper title_page">
-          <h4>The</h4>
-          <h1>Name Hall of Fame</h1>
+          <div id="title">
+            <h4>The</h4>
+            <h1>Name Hall of Fame</h1>
+          </div>
           <div id="title_content">
             <h5>
               <span>Celebrating</span>

@@ -75,7 +75,6 @@ class AddName extends React.Component {
           DataUtils.passNameToDatabase(corrected, name).then(
             (member) => {
               newState.status.message = "success";
-              newState.inputValue = "TYPE NAME HERE";
               this.setState(newState);
               this.props.updateList();
             },
