@@ -32,7 +32,7 @@
 
   #title {
     padding: 0;
-    margin-top: 20px;
+    margin-top: 5px;
   }
 
   h1 {
@@ -70,7 +70,7 @@
   }
 
   h5 {
-    letter-spacing: 10px;
+    letter-spacing: 5px;
     width: 80%;
     max-width: 700px;
     color: $grey;
@@ -131,7 +131,10 @@
   #down_arrow {
     height: $iconSize !important;
   }
-  // #title {
-  //   margin-top: 20px !important;
-  // }
+  #title {
+    margin-top: 20px !important;
+  }
+  #title_content h5 {
+    letter-spacing: 10px !important;
+  }
 }
