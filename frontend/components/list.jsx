@@ -26,8 +26,9 @@ class List extends React.Component {
       let inducted = ListUtils.formatDate(member.date);
 
       memberLis.push(
-        <a href={`https://en.wikipedia.org/wiki/${member.name}`}>
-          <li key={member.date}>
+        <a href={`https://en.wikipedia.org/wiki/${member.name}`}
+          key={member.date}>
+          <li>
             <h2>I: {inducted}</h2>
             <h1>{member.name}</h1>
             <p>{member.bio}</p>
