@@ -27,7 +27,7 @@
       max-width: 750px;
       list-style-type: none;
       border-bottom: 1px solid $blue;
-      padding-bottom: 20px;
+      padding-bottom: 50px;
       h1 {
         text-transform: uppercase;
         text-align: center;
@@ -44,12 +44,14 @@
       p {
         font-size: .6em;
         font-style: italic;
+        width: 70%;
+        margin: auto;
       }
 
       h2 {
         font-size: .5em;
         letter-spacing: 7px;
-        margin-top: 100px;
+        margin-top: 120px;
         white-space: nowrap;
         text-transform: uppercase;
       }

@@ -8,7 +8,14 @@ html, body, #root {
 }
 
 html, body {
-  font-size: $base;
+  font-size: $mobile;
+}
+
+
+@media only screen and (min-width: 700px) {
+  html, body {
+    font-size: $base;
+  }
 }
 
 .wrapper, #app {

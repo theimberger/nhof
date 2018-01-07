@@ -2,18 +2,21 @@
 <html>
   <head>
     <title>The Name Hall of Fame</title>
-    <link rel="icon" href="<%= image_url('nhof-favicon.png') %>">
-    <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= csrf_meta_tags %>
     <%= javascript_include_tag 'application' %>
 
+    <!-- images -->
     <script type="text/javascript">
       window.downArrow = "<%= image_url('arrow.png') %>";
       window.closeX = "<%= image_url('closeX.svg') %>";
     </script>
 
+    <!-- css links -->
     <link href="https://fonts.googleapis.com/css?family=Barlow:300|Forum" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link rel="icon" href="<%= image_url('nhof-favicon.png') %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
   </head>
 
   <body>

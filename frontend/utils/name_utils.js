@@ -149,6 +149,9 @@ export const validateName = (data) => {
   // if a date is found - return info
   console.log(info);
 
+  info = info.slice(0, 150) + "...";
+  console.log(info);
+
   if (isPerson) {
     return info;
   } else {
