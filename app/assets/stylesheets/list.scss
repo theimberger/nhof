@@ -42,14 +42,14 @@
       }
 
       p {
-        font-size: .6em;
+        font-size: 0.9em;
         font-style: italic;
         width: 70%;
         margin: auto;
       }
 
       h2 {
-        font-size: .5em;
+        font-size: 0.7em;
         letter-spacing: 7px;
         margin-top: 120px;
         white-space: nowrap;
@@ -64,5 +64,15 @@
 
   a:hover li h2 {
     color: $blue;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  #list ul li p {
+    font-size: 0.6em;
+  }
+
+  #list ul li h2 {
+    font-size: 0.5em;
   }
 }
