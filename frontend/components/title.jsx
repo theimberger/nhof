@@ -22,7 +22,7 @@ class Title extends React.Component {
               <hr className="center_line" />
             </h5>
             <h3>Add a name to the list</h3>
-            <AddName />
+            <AddName updateList={this.props.updateList}/>
             <p>Scroll to list</p>
             <img id="down_arrow" src={window.downArrow} />
           </div>

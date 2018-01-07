@@ -7,6 +7,10 @@ class List extends React.Component {
     this.state = { members: [] };
   }
 
+  componentWillReceiveProps() {
+    this.componentDidMount();
+  }
+
   componentDidMount() {
     let newState = this.state;
     ListUtils.getNames().then(

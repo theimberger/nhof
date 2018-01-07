@@ -9,6 +9,8 @@ class NamesController < ApplicationController
     name = Name.new(name_params)
 
     if name.save!
+      @name = name
+      render 'names/show', format: :json
     else
       render :json, ["Already submitted"]
     end
