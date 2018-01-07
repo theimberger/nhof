@@ -28,6 +28,8 @@ class AddName extends React.Component {
     newState.status.pending = true;
     this.setState(newState);
     $("#title_content").css("visibility", "visible");
+    $("#title_content p").css("visibility", "visible");
+    $("#title_content img").css("visibility", "visible");
   }
 
   clearInitial() {

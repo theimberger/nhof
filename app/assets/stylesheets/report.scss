@@ -1,12 +1,13 @@
 .report {
-  position: absolute;
+  position: fixed;
   left: 15%;
   right: 15%;
-  top: 0;
+  top: 200px;
   padding: 125px 100px 200px;
   background: $red;
   border: 1px solid $white;
   visibility: visible !important;
+  z-index: 5;
 
   img.close {
     position: absolute;
