@@ -28,8 +28,9 @@ class AddName extends React.Component {
     newState.status.pending = true;
     this.setState(newState);
     $("#title_content").css("visibility", "visible");
-    $("#title_content p").css("visibility", "visible");
-    $("#title_content img").css("visibility", "visible");
+    $("#title_form p").css("visibility", "visible");
+    $("#title_form img").css("visibility", "visible");
+    $("#title_form input").css("visibility", "visible");
   }
 
   clearInitial() {
@@ -97,12 +98,13 @@ class AddName extends React.Component {
     let statusReport;
     if (!this.state.status.pending) {
       $("#title_content").css("visibility", "hidden");
-      $("#title_content p").css("visibility", "hidden");
-      $("#title_content img").css("visibility", "hidden");
+      $("#title_form p").css("visibility", "hidden");
+      $("#title_form img").css("visibility", "hidden");
+      $("#title_form input").css("visibility", "hidden");
 
       if (this.state.status.message === "success") {
-        $("#title_content p").css("visibility", "visible");
-        $("#title_content img").css("visibility", "visible");
+        $("#title_form p").css("visibility", "visible");
+        $("#title_form img").css("visibility", "visible");
 
         statusReport = <NameSuccess
           name={this.state.inputValue}
