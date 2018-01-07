@@ -20,7 +20,10 @@ export const validateName = (data) => {
 
   info = info.revisions[0]["*"];
 
-  console.log(info);
+  if (info.toLowerCase().includes("early life")
+      || info.toLowerCase().includes("career")) {
+        isPerson = true;
+      }
 
   // get first paragraph
   info = info.split("'''");
@@ -28,8 +31,28 @@ export const validateName = (data) => {
   info = info.split("\n");
   info = info[0];
 
-  // remove <ref> tags
+
+  // remove anything in {{}}
   let i = 0;
+  while (i < info.length) {
+    if (info[i] === "{" && info[i + 1] === "{") {
+      let j = i + 2;
+      while (j < info.length) {
+        if (info[j] === "}" && info[j - 1] === "}") {
+          if (info[j + 1] === ";") {
+            j += 1;
+          }
+          info = info.slice(0, i) + info.slice(j + 1, info.length);
+          j = info.length;
+        }
+        j ++;
+      }
+    }
+    i ++;
+  }
+
+  // remove <ref> tags
+  i = 0;
   while (i < info.length) {
     if (info[i] === "<") {
       let j = i + 1;
@@ -37,6 +60,10 @@ export const validateName = (data) => {
       while (j < info.length) {
         if (info[j] === ">") {
           if (secondClose || info[j - 1] === "/") {
+
+            if (info[i - 1] === "(") {
+              j ++;
+            }
             info = info.slice(0, i) + info.slice(j + 1, info.length);
             j = info.length + 1;
             i = 0;
@@ -49,7 +76,24 @@ export const validateName = (data) => {
     }
     i ++;
   }
-  console.log(info);
+
+  // remove <!-- comments -->
+  i = 0;
+  while (i < info.length) {
+    if (info[i] === "<" && info[i + 1] === "!") {
+      let j = i + 2;
+      while (j < info.length) {
+        if (info[j] === ">" && info[j - 1] === "-") {
+          info = info.slice(0, i) + info.slice(j + 1, info.length);
+          j = info.length + 1;
+          i = 0;
+        }
+        j ++;
+      }
+    }
+
+    i ++;
+  }
 
   // remove internal links, formated as either
   // [[link]] or [[link | linktext]]
@@ -71,19 +115,8 @@ export const validateName = (data) => {
 
   // check for either a date born or a month within a set of parens
   let parenCapture = info.match(/\((.*?)\)/g), //selects all text inside parens
-      months = [
-        "january",
-        "febuary",
-        "march",
-        "april",
-        "may",
-        "june",
-        "july",
-        "august",
-        "september",
-        "october",
-        "novemeber",
-        "december"
+      months = ["january", "febuary", "march", "april", "may", "june",
+        "july", "august", "september", "october", "novemeber", "december"
       ];
 
   if (parenCapture) {
@@ -102,6 +135,7 @@ export const validateName = (data) => {
   }
 
   // if a date is found - return info
+  console.log(info);
 
   if (isPerson) {
     return info;

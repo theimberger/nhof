@@ -4,6 +4,17 @@
   width: 100%;
   min-height: 100%;
 
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:visited {
+      color: inherit;
+    }
+    &:hover {
+      color: $blue !important;
+    }
+  }
+
   ul {
     width: 100%;
     margin: 0;
@@ -40,7 +51,16 @@
         letter-spacing: 7px;
         margin-top: 100px;
         white-space: nowrap;
+        text-transform: uppercase;
       }
     }
+  }
+
+  a:hover li p {
+    color: $blue;
+  }
+
+  a:hover li h2 {
+    color: $blue;
   }
 }
