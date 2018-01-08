@@ -2,8 +2,11 @@
   position: fixed;
   left: 15%;
   right: 15%;
-  top: 200px;
-  padding: 125px 100px 200px;
+  top: 100px;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: $red;
   border: 1px solid $white;
   visibility: visible !important;
@@ -55,5 +58,10 @@
 @media only screen and (min-width: 700px) {
   img.close {
     height: 100px !important;
+  }
+  .report {
+    padding: 125px 100px 200px !important;
+    top: 200px !important;
+    height: default;
   }
 }

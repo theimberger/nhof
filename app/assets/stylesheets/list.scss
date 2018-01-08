@@ -32,7 +32,7 @@
         text-transform: uppercase;
         text-align: center;
         font-family: $serif;
-        font-size: 2.3em;
+        font-size: 3em;
         letter-spacing: 10px;
       }
       p, h2 {
@@ -42,14 +42,14 @@
       }
 
       p {
-        font-size: 0.9em;
+        font-size: 1.1em;
         font-style: italic;
         width: 70%;
         margin: auto;
       }
 
       h2 {
-        font-size: 0.7em;
+        font-size: 1em;
         letter-spacing: 7px;
         margin-top: 120px;
         white-space: nowrap;
@@ -71,8 +71,10 @@
   #list ul li p {
     font-size: 0.6em;
   }
-
   #list ul li h2 {
     font-size: 0.5em;
+  }
+  #list ul li h1 {
+    font-size: 2.3em;
   }
 }
