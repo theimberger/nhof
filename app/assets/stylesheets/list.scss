@@ -30,7 +30,8 @@
       padding-bottom: 50px;
       h1 {
         text-transform: uppercase;
-        margin: auto;
+        width: 142%;
+        margin-left: -21%;
         text-align: center;
         font-family: $serif;
         font-size: 3em;
@@ -77,5 +78,7 @@
   }
   #list ul li h1 {
     font-size: 2.3em;
+    margin-left: auto;
+    width: 100%;
   }
 }
