@@ -38,6 +38,7 @@ class List extends React.Component {
 
       memberLis.push(
         <a href={`https://en.wikipedia.org/wiki/${member.name}`}
+          target="_blank"
           key={member.date}>
           <li>
             <h2>I: {inducted}</h2>
