@@ -57,6 +57,7 @@ class AddName extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    $('#title_form input').blur();
     let newState = Object.assign({}, this.state);
 
     let corrected = this.state.inputValue.toLowerCase();

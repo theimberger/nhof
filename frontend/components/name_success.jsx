@@ -3,9 +3,9 @@ import React from 'react';
 export const NameSuccess = (props) => {
 
   return (
-    <div className="success report">
+    <div className="success report"
+      onClick={props.close()}>
       <img className="close"
-        onClick={props.close()}
         src={window.closeX} />
       <p>You have inducted</p>
       <h1>{props.name}</h1>

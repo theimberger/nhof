@@ -26,9 +26,8 @@ export const NameError = (props) => {
   }
 
   return (
-    <div className="error report">
+    <div className="error report" onClick={props.close()}>
       <img className="close"
-        onClick={props.close()}
         src={window.closeX} />
       <h1>{title}</h1>
       {details}
