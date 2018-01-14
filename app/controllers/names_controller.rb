@@ -1,7 +1,7 @@
 class NamesController < ApplicationController
 
   def index
-    @names = Name.all
+    @names = Name.all.reverse
     render 'index'
   end
 
