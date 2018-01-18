@@ -1,7 +1,9 @@
 class NamesController < ApplicationController
 
   def index
-    @names = Name.all.reverse
+    @names = Name.all
+    @names = @names.sort_by {|name| name.id }
+    @names.reverse!
     render 'index'
   end
 
