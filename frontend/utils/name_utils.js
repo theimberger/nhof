@@ -20,8 +20,15 @@ export const validateName = (data) => {
 
   info = info.revisions[0]["*"];
 
-  if (info.toLowerCase().includes("early life")
-      || info.toLowerCase().includes("career")) {
+  // handle redirects
+  if (info.slice(0, 9).toLowerCase() === "#redirect") {
+    info = info.match(/\[(.*?)\]/g);
+    info = info[0];
+    info = info.slice(2, info.length - 1);
+    return ["redirect", info];
+  }
+
+  if (info.toLowerCase().includes("early life")) {
         isPerson = true;
       }
 
@@ -147,10 +154,7 @@ export const validateName = (data) => {
   }
 
   // if a date is found - return info
-  console.log(info);
-
   info = info.slice(0, 150) + "...";
-  console.log(info);
 
   if (isPerson) {
     return info;

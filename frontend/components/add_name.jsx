@@ -20,6 +20,7 @@ class AddName extends React.Component {
     this.setInitial = this.setInitial.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleAsync = this.handleAsync.bind(this);
     this.closeError = this.closeError.bind(this);
   }
 
@@ -55,28 +56,29 @@ class AddName extends React.Component {
     this.setState(newState);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    $('#title_form input').blur();
+  handleAsync(input) {
     let newState = Object.assign({}, this.state);
 
-    let corrected = this.state.inputValue.toLowerCase();
-    corrected = corrected.split(" ");
-    corrected = corrected.map((n) => n[0].toUpperCase() + n.slice(1));
-    corrected = corrected.join(" ");
-
-    NameUtils.submitName(corrected).then(
+    NameUtils.submitName(input).then(
       (res) =>{
         let name = NameUtils.validateName(res);
+
         newState.status.pending = false;
+
         if (!name) {
           newState.status.message = "not a name";
           this.setState(newState);
+
         } else if (name === "no page found") {
           newState.status.message = "no name found";
           this.setState(newState);
+
+        } else if (name[0] === "redirect") {
+          this.handleAsync(name[1]);
+          return;
+
         } else {
-          DataUtils.passNameToDatabase(corrected, name).then(
+          DataUtils.passNameToDatabase(input, name).then(
             (member) => {
               newState.status.message = "success";
               this.setState(newState);
@@ -91,6 +93,18 @@ class AddName extends React.Component {
           );
         }
       });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    $('#title_form input').blur();
+    let newState = Object.assign({}, this.state);
+
+    let corrected = this.state.inputValue.toLowerCase();
+    corrected = corrected.split(" ");
+    corrected = corrected.map((n) => n[0].toUpperCase() + n.slice(1));
+    corrected = corrected.join(" ");
+    this.handleAsync(corrected);
 
     this.setState(newState);
   }
