@@ -19,6 +19,10 @@ export const NameError = (props) => {
       title = "Great Minds...";
       details = <p>It looks like somebody has already submitted that name</p>;
       break;
+    case "blacklisted":
+      title = "Blacklisted";
+      details = <p>Sorry, we're not gonna put that name up.</p>;
+      break;
     default:
       title = "Error";
       details = <p>Uh oh, some unforseen evil has
