@@ -86,7 +86,7 @@ class AddName extends React.Component {
             },
             (err) => {
               if (err.status === 422) {
-                newState.status.message = "already submitted";
+                newState.status.message = err.responseJSON.type;
                 this.setState(newState);
               }
             }
