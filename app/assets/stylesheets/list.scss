@@ -27,7 +27,7 @@
       max-width: 750px;
       list-style-type: none;
       border-bottom: 1px solid $blue;
-      padding-bottom: 50px;
+      padding-bottom: 20px;
       h1 {
         text-transform: uppercase;
         width: 140%;
@@ -71,6 +71,35 @@
   a:hover li h2 {
     color: $blue;
   }
+}
+
+.voting_controls {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 30px;
+}
+
+.voting_controls_up,
+.voting_controls_down {
+  width: 150px;
+  padding: 5px;
+  background: none;
+  border: none;
+  border-radius: 14px;
+  outline: none;
+  color: $gold;
+  font-family: $sans;
+  text-transform: uppercase;
+}
+
+.voting_controls_up {
+  border: 1px solid $green;
+}
+
+.voting_controls_down {
+  border: 1px solid $darkRed;
 }
 
 @media only screen and (min-width: 700px) {
