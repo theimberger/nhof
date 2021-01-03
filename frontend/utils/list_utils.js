@@ -1,7 +1,15 @@
 export const getNames = () => {
   return $.ajax({
     method: "GET",
-    url: "/names"
+    url: "/names",
+  });
+};
+
+export const sendVoteToBackend = (id, vote) => {
+  return $.ajax({
+    method: "PUT",
+    url: `/names/${id}`,
+    data: { vote },
   });
 };
 

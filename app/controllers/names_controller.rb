@@ -23,8 +23,21 @@ class NamesController < ApplicationController
 
   end
 
+  def update
+    @name = Name.find(update_params[:id])
+    voteUpdate = @name.score + update_params[:vote].to_i
+    puts @name
+    puts voteUpdate
+    @name.update(score: voteUpdate);
+    @name.save!
+  end
+
   def name_params
     params.permit(:name, :bio)
+  end
+
+  def update_params
+    params.permit(:id, :vote);
   end
 
 end

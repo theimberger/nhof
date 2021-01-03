@@ -27,7 +27,7 @@
       max-width: 750px;
       list-style-type: none;
       border-bottom: 1px solid $blue;
-      padding-bottom: 50px;
+      padding-bottom: 20px;
       h1 {
         text-transform: uppercase;
         width: 140%;
@@ -61,6 +61,15 @@
         margin-top: 120px;
         text-transform: uppercase;
       }
+
+      .voted_header {
+        font-size: 0.4em;
+        color: $gold;
+      }
+
+      .date_header {
+        margin-top: 20px;
+      }
     }
   }
 
@@ -71,6 +80,77 @@
   a:hover li h2 {
     color: $blue;
   }
+}
+
+.voting_controls {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 30px;
+  font-size: 1em;
+}
+
+.voting_confirm_up,
+.voting_confirm_down,
+.voting_controls_up,
+.voting_controls_down {
+  position: relative;
+  width: 100px;
+  padding: 5px;
+  box-sizing: border-box;
+  background: none;
+  border: none;
+  border-radius: 14px;
+  outline: none;
+  color: $gold;
+  font-family: $sans;
+  font-size: inherit;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+}
+
+.voting_controls_up {
+  margin-left: 5px;
+}
+
+.voting_controls_down {
+  margin-right: 5px;
+}
+
+.voting_confirm_up,
+.voting_controls_up {
+  border: 1px solid $green;
+}
+
+.voting_confirm_down,
+.voting_controls_down {
+  border: 1px solid $darkRed;
+}
+
+.voting_confirm_up {
+  color: $green;
+}
+
+.voting_confirm_down {
+  color: $darkRed;
+}
+
+.voting_control_arrow_up,
+.voting_control_arrow_down {
+  position: absolute;
+  height: 150%;
+  top: -25%;
+}
+
+.voting_control_arrow_up {
+  left: -20px;
+}
+
+.voting_control_arrow_down {
+  right: -20px;
+  transform: rotate(180deg);
 }
 
 @media only screen and (min-width: 700px) {
@@ -90,5 +170,30 @@
       letter-spacing: 10px;
     }
   }
+  .voting_controls {
+    font-size: 0.5em;
+  }
 
+  .voting_confirm_up,
+  .voting_confirm_down,
+  .voting_controls_up,
+  .voting_controls_down {
+    width: 150px;
+  }
+
+  .voting_controls_up {
+    margin-left: 30px;
+  }
+  
+  .voting_controls_down {
+    margin-right: 30px;
+  }
+
+  .voting_control_arrow_up {
+    left: -30px;
+  }
+  
+  .voting_control_arrow_down {
+    right: -30px;
+  }
 }

@@ -5,7 +5,7 @@ import List from './list';
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {count: 1};
+    this.state = { count: 1 };
     this.updateList = this.updateList.bind(this);
   }
 
@@ -18,8 +18,8 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <Title updateList={this.updateList} />
-        <List count={this.state.count} />
+        <Title updateList={ this.updateList } />
+        <List count={ this.state.count } />
       </div>
     );
   }
