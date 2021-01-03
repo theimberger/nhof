@@ -5,7 +5,7 @@ const Title = (props) => (
     <div className="wrapper title_page">
       <div id="title">
         <h4>The</h4>
-        <h1>Name Hall of Fameeeee</h1>
+        <h1>Name Hall of Fame</h1>
       </div>
 
       <div id="title_content">
