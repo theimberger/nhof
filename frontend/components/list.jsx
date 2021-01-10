@@ -30,7 +30,7 @@ class List extends React.Component {
     getNames().then(res => {
       const members = res;
       const rankingMap = {};
-      newState.members = members;
+      newState.members = members.sort((m, n) => n.score - m.score);
       members.forEach(member => {
         if (rankingMap[member.score]) {
           rankingMap[member.score].push(member.id);
@@ -63,7 +63,11 @@ class List extends React.Component {
     setVoteCookie(votes);
     sendVoteToBackend(id, vote);
 
-    this.setState({ votes, members, rankingMap });
+    this.setState({
+      votes,
+      members: members.sort((m, n) => n.score - m.score),
+      rankingMap
+    });
   }
 
   render() {
