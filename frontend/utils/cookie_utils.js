@@ -1,5 +1,5 @@
 export const setVoteCookie = (voteObject) => {
-  document.cookie = 'votes=' + JSON.stringify(voteObject);
+  document.cookie = `votes=${JSON.stringify(voteObject)}; expires=Thu, 31 Dec 2099 23:59:59 GMT`;
 };
 
 export const getVoteCookie = () => {
