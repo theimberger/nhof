@@ -70,9 +70,12 @@ class AddName extends React.Component {
           this.setState(newState);
 
         } else if (name === "no page found") {
-          newState.status.message = "no name found";
-          this.setState(newState);
-
+          if (input !== this.state.inputValue) {
+            this.handleAsync(this.state.inputValue);
+          } else {
+            newState.status.message = "no name found";
+            this.setState(newState);
+          }
         } else if (name[0] === "redirect") {
           this.handleAsync(name[1]);
           return;
