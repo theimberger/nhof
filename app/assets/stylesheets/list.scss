@@ -153,6 +153,30 @@
   transform: rotate(180deg);
 }
 
+.sort_control {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-family: $sans;
+  font-size: .8em;
+  cursor: default;
+}
+
+.sort_type {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#list .sort_dropdown {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.sort_dropdown--collapsed {
+  height: 0;
+}
+
 @media only screen and (min-width: 700px) {
   #list ul li p {
     font-size: 0.6em;

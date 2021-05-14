@@ -1,15 +1,22 @@
 import React from 'react';
 
 import NameItem from './name_item';
+import SortControl from './sort_control'
 import { getNames, sendVoteToBackend } from '../utils/list_utils';
 import { getVoteCookie, setVoteCookie } from '../utils/cookie_utils';
 
 class List extends React.Component {
   constructor() {
     super();
-    this.state = { members: [], votes: {}, rankingMap: {} };
+    this.state = {
+      members: [],
+      votes: {},
+      rankingMap: {},
+      sortType: 'rank',
+    };
 
     this.setVote = this.setVote.bind(this);
+    this.setSort = this.setSort.bind(this);
   }
 
   componentWillReceiveProps() {
@@ -70,8 +77,21 @@ class List extends React.Component {
     });
   }
 
+  setSort() {
+    if (this.state.sortType === 'rank') {
+      this.setState({ sortType: 'date' });
+    } else {
+      this.setState({ sortType: 'rank' });
+    }
+  }
+
   render() {
-    const { members, votes, rankingMap } = this.state;
+    const {
+      members,
+      votes,
+      rankingMap,
+      sortType,
+    } = this.state;
 
     if (!members.length){
       return <div></div>;
@@ -79,6 +99,10 @@ class List extends React.Component {
 
     return (
       <div id="list">
+        {/* <SortControl
+          sortType={ sortType }
+          setSort={ this.setSort }
+        /> */}
         <ul>
           { members.map(member => (
             <NameItem
