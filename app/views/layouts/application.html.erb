@@ -1,23 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The Name Hall of Fame</title>
-
+    <title>Nhof</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-    <%= javascript_include_tag 'application' %>
+    <%= csp_meta_tag %>
 
-    <!-- images -->
-    <script type="text/javascript">
-      window.downArrow = "<%= image_url('arrow.png') %>";
-      window.closeX = "<%= image_url('closeX.svg') %>";
-      window.voteArrow = "<%= image_url('vote-arrow.svg') %>";
-    </script>
-
-    <!-- css links -->
-    <link href="https://fonts.googleapis.com/css?family=Barlow:300|Forum" rel="stylesheet">
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <link rel="icon" href="<%= image_url('nhof-favicon.png') %>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
