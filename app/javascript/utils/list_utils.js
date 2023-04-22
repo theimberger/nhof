@@ -1,15 +1,17 @@
 export const getNames = () => {
-  return fetch({
-    method: "GET",
-    url: "/names",
-  });
+  return fetch('/names');
 };
 
 export const sendVoteToBackend = (id, vote) => {
-  return fetch({
+  const token = document.querySelector('meta[name="csrf-token"]').content;
+
+  return fetch(`/names/${id}`, {
     method: "PUT",
-    url: `/names/${id}`,
-    data: { vote },
+    body: JSON.stringify({ vote }),
+    headers: {
+      "X-CSRF-Token": token,
+      "Content-Type": "application/json",
+    },
   });
 };
 

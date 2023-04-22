@@ -28,10 +28,6 @@ class AddName extends React.Component {
     let newState = Object.assign({}, this.state);
     newState.status.pending = true;
     this.setState(newState);
-    $("#title_content").css("visibility", "visible");
-    $("#title_form p").css("visibility", "visible");
-    $("#title_form img").css("visibility", "visible");
-    $("#title_form input").css("visibility", "visible");
   }
 
   clearInitial() {
@@ -59,8 +55,9 @@ class AddName extends React.Component {
   handleAsync(input) {
     let newState = Object.assign({}, this.state);
 
-    NameUtils.submitName(input).then(
-      (res) =>{
+    NameUtils.submitName(input)
+      .then((res) => res.json())
+      .then((res) => {
         let name = NameUtils.validateName(res);
 
         newState.status.pending = false;
@@ -100,7 +97,6 @@ class AddName extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    $('#title_form input').blur();
     let newState = Object.assign({}, this.state);
 
     let corrected = this.state.inputValue.toLowerCase();
@@ -115,14 +111,7 @@ class AddName extends React.Component {
   render() {
     let statusReport;
     if (!this.state.status.pending) {
-      $("#title_content").css("visibility", "hidden");
-      $("#title_form p").css("visibility", "hidden");
-      $("#title_form img").css("visibility", "hidden");
-      $("#title_form input").css("visibility", "hidden");
-
       if (this.state.status.message === "success") {
-        $("#title_form p").css("visibility", "visible");
-        $("#title_form img").css("visibility", "visible");
 
         statusReport = <NameSuccess
           name={this.state.inputValue}

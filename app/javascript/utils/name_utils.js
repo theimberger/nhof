@@ -1,9 +1,8 @@
 export const submitName = (name) => {
-  return fetch({
-    method: "GET",
-    url: `https://en.wikipedia.org/w/api.php?action=query` +
-      `&prop=revisions&rvprop=content&format=json&origin=*&titles=${name}`
-  });
+  const wikiUrl = 'https://en.wikipedia.org/w/api.php?action=query'
+  const queryString = `&prop=revisions&rvprop=content&format=json&origin=*&titles=${name}`
+
+  return fetch(`${wikiUrl}${queryString}`);
 };
 
 export const validateName = (data) => {

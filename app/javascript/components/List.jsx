@@ -34,8 +34,10 @@ class List extends React.Component {
       newState.votes = existingCookie;
     }
 
-    getNames().then(res => {
-      const members = res;
+    getNames().then((res) => res.json())
+      .then((res) => {
+        const members = res;
+        console.log(members)
       const rankingMap = {};
       newState.members = members.sort((m, n) => n.score - m.score);
       members.forEach(member => {
