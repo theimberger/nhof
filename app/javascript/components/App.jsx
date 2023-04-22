@@ -1,4 +1,20 @@
-import React from "react";
-import Routes from "../routes";
+import React, { useState } from 'react';
+import Title from './Title';
+import List from './List';
 
-export default props => <>{Routes}</>;
+const App = () => {
+  const [count, setCount] = useState(1)
+
+  const updateList = () => {
+    setCount(count + 1)
+  }
+
+  return (
+    <div id="app">
+      <Title updateList={ updateList } />
+      <List count={ count } />
+    </div>
+  );
+}
+
+export default App;
