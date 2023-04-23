@@ -1,12 +1,24 @@
-# The Name Hall of Fame
-The Name Hall of Fame is a pet project I've been working on with my brother (a graphic designer), [Max Heimberger](http://maxheimberger.com).  The idea is born of inside joke between us and our friend Collin and
-the purpose is to document the greatest names ever bequeathed.
+# README
 
-Names are submitted by the public but only are added to the list if they have a corresponding wikipedia page.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Parsing wikipedia
-The majority of the heavy lifting in this code is done in the add_name component and the name_utils.js file.
-The response text from wikipedia comes with a variety of issues, including but not limited to inline links, citations, and
-inline <ref> tags.  You can see the code for parsing the response text in the /frontend/utils/name_utils file.
+Things you may want to cover:
 
-### [Live!](http://www.namehalloffame.org)
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
