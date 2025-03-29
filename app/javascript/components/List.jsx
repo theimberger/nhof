@@ -12,7 +12,7 @@ class List extends React.Component {
       members: [],
       votes: {},
       rankingMap: {},
-      sortType: 'rank',
+      sortType: 'date',
     };
 
     this.setVote = this.setVote.bind(this);
@@ -39,7 +39,9 @@ class List extends React.Component {
         const members = res;
         console.log(members)
       const rankingMap = {};
-      newState.members = members.sort((m, n) => n.score - m.score);
+      newState.members = members.sort((m, n) =>
+        new Date(n.date).getTime() - new Date(n.date).getTime(m)
+      ),
       members.forEach(member => {
         if (rankingMap[member.score]) {
           rankingMap[member.score].push(member.id);
@@ -74,7 +76,9 @@ class List extends React.Component {
 
     this.setState({
       votes,
-      members: members.sort((m, n) => n.score - m.score),
+      members: members.sort((m, n) =>
+        new Date(n.date).getTime() - new Date(n.date).getTime(m)
+      ),
       rankingMap
     });
   }
