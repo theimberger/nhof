@@ -34,6 +34,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ type: 'already submitted' }, { status: 422 });
   }
 
+  if (typeof name !== 'string' || name.length > 200) {
+    return NextResponse.json({ type: 'invalid', field: 'name' }, { status: 422 });
+  }
+
+  if (typeof bio !== 'string' || bio.length > 2000) {
+    return NextResponse.json({ type: 'invalid', field: 'bio' }, { status: 422 });
+  }
+
   if (BLACKLIST.includes(name.toLowerCase())) {
     return NextResponse.json({ type: 'blacklisted' }, { status: 422 });
   }
