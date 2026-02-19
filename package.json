@@ -1,15 +1,29 @@
 {
-  "name": "app",
-  "private": "true",
-  "dependencies": {
-    "@hotwired/stimulus": "^3.2.1",
-    "@hotwired/turbo-rails": "^7.3.0",
-    "esbuild": "^0.17.17",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.10.0"
-  },
+  "name": "nhof",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "next": "^15.1.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "drizzle-orm": "^0.38.0",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "drizzle-kit": "^0.29.0",
+    "sass": "^1.80.0",
+    "typescript": "^5.7.0"
   }
 }
